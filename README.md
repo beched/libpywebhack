@@ -229,7 +229,6 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
         Found: guest.yandex.ru
         Found: help.yandex.ru
         .....................  (output removed, run it yourself :P)
-        Found: sirius.yandex.ru
         Found: site.yandex.ru
         Found: warehouse.yandex.ru
         Found: epsilon.yandex.ru
@@ -298,6 +297,9 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
         Checking for (PHP) source code...
         ==========
         Fuzzing GET-parameters
-        Found XSS. Payload: id=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00&page=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00/scan.phpFound XSS. Payload: id=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00&page=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00/scan.phpFound PHP Error. Payload: id=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00&page=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00/scan.php==========
+        Found XSS. Payload: id=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00&page=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00/scan.php
+        Found XSS. Payload: id=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00&page=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00/scan.php
+        Found PHP Error. Payload: id=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00&page=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00/scan.php
+        ==========
         47 requests made
     ```

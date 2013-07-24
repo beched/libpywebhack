@@ -510,16 +510,16 @@ class WebHack(PyWebHack):
                     query = urlencode({x: payload for x in self.known_urls[path]['args'][mode]})
                     html, code, hdrs = self.gpcreq(path, query, mode)
                     if code == 500:
-                        self.rep_log('Found Internal Server Error. Payload: %s' % query, path)
+                        self.rep_log('Found Internal Server Error. Payload: %s' % query)
                     for vuln in fuzz_base[payload][0]: #checking response body
                         for pattern in fuzz_base[payload][0][vuln]:
                             if re.search(pattern, html, re.I | re.S):
-                                self.rep_log('Found %s. Payload: %s' % (vuln, query), path)
+                                self.rep_log('Found %s. Payload: %s' % (vuln, query))
                     for vuln in fuzz_base[payload][1]: #checking response headers
                         for pattern in fuzz_base[payload][1][vuln]:
                             if re.search(pattern, '\r\n'.join([' '.join((x, y)) for (x, y) in hdrs.items()]),
                                          re.I | re.S):
-                                self.rep_log('Found %s. Payload: %s' % (vuln, query), path)
+                                self.rep_log('Found %s. Payload: %s' % (vuln, query))
 
 if __name__ == '__main__':
     PyWebHack()
