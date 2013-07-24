@@ -28,11 +28,14 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
 #Examples of usage
 * Let's try something with ASP.NET site
     * Put the following into test.py
+    ```python
         from libpywebhack import WebHack
 
         a = WebHack(host='some_host', ssl=1)
         a.iistest('/')
+    ```
     * Run and get the result
+    ```
         $ python test.py
         ==========
         Testing for specific Microsoft-IIS issues
@@ -61,14 +64,18 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
         Checking for /WebResource.axd?d=A...
         ==========
         279 requests made
+    ```
     * Well, almost nothing sensible at this server, but at least ASPNET~1 is a short name for the default aspnet_client directory. So, it works.
 * What do you do, when you see a WEB2.0 web site? I run libpywebhack! Take the task http://ahack.ru/contest/?act=tmng as an example.
     * Let's get some info first
+    ```python
         from libpywebhack import WebHack
 
         a = WebHack(host='ahack.ru')
         a.softdetect('/contest/tinymanager/')
+    ```
     * Run it and get the information
+    ```
         $ python test.py
         ==========
         Retrieving information from /contest/tinymanager/
@@ -98,7 +105,9 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
         PHP detected
         ==========
         15 requests made
+    ```
     * So, it's apache. Let's get the real script name under the rewrite first
+    ```
         $ python test.py
         ==========
         Testing specific Apache issues
@@ -107,13 +116,17 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
         Checking for server status application...
         ==========
         3 requests made
+    ```
     * Got it (I removed the flag from above). What's the next step in rewrited app hacking? Get the parameters. Take another task as an example: http://ahack.ru/contest/?act=teaser
+    ```python
         from libpywebhack import WebHack
 
         a = WebHack(host='ahack.ru') #may use a = WebHack(host='ahack.ru', cut = 'uncache_\w+')
         a.cut = 'uncache_\w+' #Remove the dynamic content from all responses (can be ads banner or something)
         a.argsfind('/contest/teaser/', modes=['get','post','cookie'])
+    ```
     * Run and get the parameter name
+    ```
         $ python test.py
         ==========
         Searching for the ['get', 'post', 'cookie']-parameters of /contest/teaser/
@@ -141,14 +154,18 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
         Found parameters:
         ==========
         29 requests made
+    ```
     * Ok, we've removed dynamic part of the page to detect abnormal responses and got a parameter name 'debug'. but what if there's no Apache, or the technique with 413 error does not work? Consider the same task
+    ```python
         from libpywebhack import WebHack
 
         a = WebHack(host='ahack.ru', ajax=1) #ajax attribute indicates the usage of 'X-Requested-With: XMLHttpRequest' header
         #a.ajax = 1 #Possible also this way
         a.argsfind('/contest/teaser/do_generate_samples', modes=['get','post','cookie']) #First find the parameters
         a.phptest('/contest/teaser/do_generate_samples') #Now perform some fuzzing using the found parameters
+    ```
     * Run, wait a bit and get the result
+    ```
         $ python test.py
         ==========
         Searching for the ['get', 'post', 'cookie']-parameters of /contest/teaser/do_generate_samples
@@ -191,14 +208,18 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
         Found server application path: /usr/local/www/ahack.ru/contest/teaser/flag_34_e918__<nope, get the flag yourseldf :P>__2557.php
         ==========
         38 requests made
+    ```
     * Won again (and flag removed again)!
 * Now move on to the general web-hacking.
     * Let's find subdomains of yandex.ru. Its DNS uses wildcards, so, we should bypass them. Using the regexp '404' is quite sufficient
+    ```python
         from libpywebhack import WebHack
 
         a = WebHack(host='yandex.ru')
         a.brutesubs(threads=8, ban_regex='404') #ignore all subdomains whose HTTP response contains string '404'
+    ```
     * Run, get the subdomains
+    ```python
         $ python test.py
         ==========
         Searching for the subdomains of yandex.ru
@@ -225,20 +246,26 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
         Found: ov.yandex.ru
         ==========
         1600 requests made
+    ```
     * Good enough, what about fuzzing? Let's consider the following PHP code
+    ```php
         <?
         echo $_GET['id'];
         echo $_POST['page'];
         echo $_COOKIE['name'];
         include $_GET['page'];
+    ```
     * Write the following code
+    ```python
         from libpywebhack import WebHack
 
         a = WebHack(host='localhost')
         a.argsfind('/scan.php')
         a.fuzzbackups('/scan.php')
         a.minifuzz('/scan.php')
+    ```
     * Get the result in half a second:
+    ```
         $ python test.py
         ==========
         Searching for the ['get']-parameters of /scan.php
@@ -273,3 +300,4 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
         Fuzzing GET-parameters
         Found XSS. Payload: id=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00&page=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00/scan.phpFound XSS. Payload: id=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00&page=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00/scan.phpFound PHP Error. Payload: id=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00&page=%3Chok%3E%27%22koh%5C+%0D%0Atest%3Atset%3B%26%00/scan.php==========
         47 requests made
+    ```
