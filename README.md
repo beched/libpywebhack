@@ -112,7 +112,7 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
         ==========
         Testing specific Apache issues
         Trying to get real application name via invalid request...
-        Found real path: /contest/tinymanager/flag_10_87c0__<nope, get the flag yourseldf :P>__e66c.php
+        Found real path: /contest/tinymanager/flag_10_87c0__<nope, get the flag yourself :P>__e66c.php
         Checking for server status application...
         ==========
         3 requests made
@@ -205,7 +205,7 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
         Trying to get a type error or a max_execution_time error by exceeding memory_limit...
         Considering max_input_nesting_level = 64...
         It can take time, wait...
-        Found server application path: /usr/local/www/ahack.ru/contest/teaser/flag_34_e918__<nope, get the flag yourseldf :P>__2557.php
+        Found server application path: /usr/local/www/ahack.ru/contest/teaser/flag_34_e918__<nope, get the flag yourself :P>__2557.php
         ==========
         38 requests made
     ```
