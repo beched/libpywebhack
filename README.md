@@ -221,7 +221,7 @@ Creative Commons Attribution Non-Commercial Share Alike
         a.brutesubs(threads=8, ban_regex='404') #ignore all subdomains whose HTTP response contains string '404'
     ```
     * Run, get the subdomains
-    ```python
+    ```
         $ python test.py
         ==========
         Searching for the subdomains of yandex.ru
