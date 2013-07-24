@@ -1,0 +1,193 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module libpywebhack</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>libpywebhack</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/beched/PycharmProjects/LibPyWebHack/libpywebhack.py">/home/beched/PycharmProjects/LibPyWebHack/libpywebhack.py</a></font></td></tr></table>
+    <p><tt>#-*-&nbsp;coding:utf-8&nbsp;-*-</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="httplib.html">httplib</a><br>
+<a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="socket.html">socket</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="threading.html">threading</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="common.html#PyWebHack">common.PyWebHack</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="libpywebhack.html#WebHack">WebHack</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="WebHack">class <strong>WebHack</strong></a>(<a href="common.html#PyWebHack">common.PyWebHack</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="WebHack-apachetest"><strong>apachetest</strong></a>(self, path)</dt><dd><tt>Perform&nbsp;some&nbsp;security-specific&nbsp;information&nbsp;retrieval&nbsp;from&nbsp;Apache<br>
+:param&nbsp;path:&nbsp;target&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="WebHack-argsfind"><strong>argsfind</strong></a>(self, path, modes<font color="#909090">=['get']</font>, fill<font color="#909090">='1'</font>, base<font color="#909090">='bases/argsbase.txt'</font>, fix<font color="#909090">=[]</font>)</dt><dd><tt>Search&nbsp;for&nbsp;the&nbsp;input&nbsp;parameters&nbsp;of&nbsp;the&nbsp;web-scenario<br>
+:param&nbsp;path:&nbsp;target&nbsp;path<br>
+:param&nbsp;modes:&nbsp;list&nbsp;of&nbsp;the&nbsp;data&nbsp;transition&nbsp;methods&nbsp;('get',&nbsp;'post'&nbsp;or&nbsp;'cookie')<br>
+:param&nbsp;fill:&nbsp;the&nbsp;payload&nbsp;which&nbsp;should&nbsp;be&nbsp;plugged&nbsp;into&nbsp;parameters<br>
+:param&nbsp;base:&nbsp;path&nbsp;to&nbsp;file&nbsp;with&nbsp;parameter&nbsp;names<br>
+:param&nbsp;fix:&nbsp;fixed&nbsp;points,&nbsp;i.e.&nbsp;a&nbsp;list&nbsp;of&nbsp;parameters&nbsp;which&nbsp;should&nbsp;be&nbsp;sent&nbsp;in&nbsp;each&nbsp;request</tt></dd></dl>
+
+<dl><dt><a name="WebHack-asptest"><strong>asptest</strong></a>(self, path)</dt><dd><tt>Search&nbsp;for&nbsp;some&nbsp;sensitive&nbsp;.NET-specific&nbsp;files<br>
+:param&nbsp;path:&nbsp;target&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="WebHack-brutesubs"><strong>brutesubs</strong></a>(self, threads<font color="#909090">=5</font>, words<font color="#909090">='bases/wordlist2.txt'</font>, ban_codes<font color="#909090">=None</font>, ban_regex<font color="#909090">=None</font>)</dt><dd><tt>Multi-threaded&nbsp;brute&nbsp;force&nbsp;of&nbsp;existing&nbsp;subdomains&nbsp;of&nbsp;the&nbsp;given&nbsp;domain<br>
+:param&nbsp;threads:&nbsp;number&nbsp;of&nbsp;threads<br>
+:param&nbsp;words:&nbsp;path&nbsp;to&nbsp;file&nbsp;with&nbsp;subdomain&nbsp;names<br>
+:param&nbsp;ban_codes:&nbsp;ignore&nbsp;subdomains&nbsp;which&nbsp;respond&nbsp;with&nbsp;these&nbsp;codes&nbsp;via&nbsp;HTTP<br>
+:param&nbsp;ban_regex:&nbsp;ignore&nbsp;subdomains&nbsp;which&nbsp;respond&nbsp;with&nbsp;body&nbsp;matching&nbsp;this&nbsp;regular&nbsp;expression&nbsp;via&nbsp;HTTP</tt></dd></dl>
+
+<dl><dt><a name="WebHack-dobrute"><strong>dobrute</strong></a>(self, a, b)</dt><dd><tt>A&nbsp;worker-method&nbsp;for&nbsp;<a href="#WebHack">WebHack</a>.<a href="#WebHack-brutesubs">brutesubs</a>()<br>
+:param&nbsp;a:&nbsp;beginning&nbsp;of&nbsp;interval<br>
+:param&nbsp;b:&nbsp;end&nbsp;of&nbsp;interval</tt></dd></dl>
+
+<dl><dt><a name="WebHack-domxsstest"><strong>domxsstest</strong></a>(self, path)</dt><dd><tt>Test&nbsp;if&nbsp;javascript-file&nbsp;matches&nbsp;some&nbsp;regular&nbsp;expressions,&nbsp;possibly&nbsp;indicating&nbsp;DOM&nbsp;XSS<br>
+:param&nbsp;path:&nbsp;target&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="WebHack-fuzzbackups"><strong>fuzzbackups</strong></a>(self, path)</dt><dd><tt>Search&nbsp;for&nbsp;source&nbsp;code&nbsp;backups&nbsp;of&nbsp;the&nbsp;script<br>
+:param&nbsp;path:&nbsp;target&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="WebHack-gpcreq"><strong>gpcreq</strong></a>(self, path, query<font color="#909090">=''</font>, mode<font color="#909090">='get'</font>)</dt><dd><tt><a href="#WebHack-restructure">restructure</a>(path)<br>
+Send&nbsp;data&nbsp;via&nbsp;GET,&nbsp;POST&nbsp;request&nbsp;or&nbsp;in&nbsp;Cookie-header<br>
+:param&nbsp;path:&nbsp;target&nbsp;path<br>
+:param&nbsp;query:&nbsp;URL-encoded&nbsp;QUERY_STRING<br>
+:param&nbsp;mode:&nbsp;'get',&nbsp;'post'&nbsp;or&nbsp;'cookie'<br>
+:return:</tt></dd></dl>
+
+<dl><dt><a name="WebHack-iiscan"><strong>iiscan</strong></a>(self, path)</dt><dd><tt>Tilde&nbsp;(~)&nbsp;and&nbsp;wildcard&nbsp;(*)&nbsp;file&nbsp;names&nbsp;brute&nbsp;force&nbsp;in&nbsp;IIS<br>
+:param&nbsp;path:&nbsp;target&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="WebHack-iistest"><strong>iistest</strong></a>(self, path)</dt><dd><tt>Search&nbsp;for&nbsp;sensitive&nbsp;IIS&nbsp;files,&nbsp;perform&nbsp;IIS&nbsp;files&nbsp;scanning,&nbsp;test&nbsp;access&nbsp;restriction&nbsp;bypass,&nbsp;test&nbsp;ASP.NET&nbsp;issues<br>
+:param&nbsp;path:&nbsp;target&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="WebHack-javatest"><strong>javatest</strong></a>(self, path)</dt><dd><tt>Hack&nbsp;Java<br>
+:param&nbsp;path:&nbsp;target&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="WebHack-minifuzz"><strong>minifuzz</strong></a>(self, path)</dt><dd><tt>Rapid&nbsp;fuzzing&nbsp;of&nbsp;known&nbsp;parameters<br>
+:param&nbsp;path:&nbsp;target&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="WebHack-nginxtest"><strong>nginxtest</strong></a>(self, path)</dt><dd><tt>Hack&nbsp;NginX<br>
+:param&nbsp;path:&nbsp;target&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="WebHack-phptest"><strong>phptest</strong></a>(self, path)</dt><dd><tt>Check&nbsp;for&nbsp;RCE,&nbsp;try&nbsp;to&nbsp;get&nbsp;PHP&nbsp;script&nbsp;path&nbsp;disclosure<br>
+:param&nbsp;path:&nbsp;target&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="WebHack-pytest"><strong>pytest</strong></a>(self, path)</dt><dd><tt>Hack&nbsp;Django<br>
+:param&nbsp;path:&nbsp;target&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="WebHack-rubytest"><strong>rubytest</strong></a>(self, path)</dt><dd><tt>Retrieve&nbsp;information&nbsp;from&nbsp;HTTP&nbsp;headers,&nbsp;check&nbsp;for&nbsp;RoR&nbsp;object&nbsp;deserialization&nbsp;RCE<br>
+:param&nbsp;path:&nbsp;target&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="WebHack-softdetect"><strong>softdetect</strong></a>(self, path)</dt><dd><tt>Extract&nbsp;information&nbsp;from&nbsp;HTTP&nbsp;headers,&nbsp;detects&nbsp;various&nbsp;platforms&nbsp;and&nbsp;searches&nbsp;for&nbsp;some&nbsp;files<br>
+:param&nbsp;path:&nbsp;target&nbsp;path</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="common.html#PyWebHack">common.PyWebHack</a>:<br>
+<dl><dt><a name="WebHack-__del__"><strong>__del__</strong></a>(self)</dt><dd><tt>The&nbsp;class&nbsp;destructor.&nbsp;Outputs&nbsp;the&nbsp;total&nbsp;number&nbsp;of&nbsp;HTTP&nbsp;requests&nbsp;made</tt></dd></dl>
+
+<dl><dt><a name="WebHack-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt><dd><tt>The&nbsp;class&nbsp;constructor.<br>
+:param&nbsp;host:&nbsp;a&nbsp;host&nbsp;to&nbsp;work&nbsp;with&nbsp;in&nbsp;format&nbsp;hostname[:port].&nbsp;The&nbsp;only&nbsp;necessary&nbsp;parameter<br>
+:param&nbsp;ssl:&nbsp;if&nbsp;True,&nbsp;HTTPS&nbsp;will&nbsp;be&nbsp;used,&nbsp;default&nbsp;value&nbsp;is&nbsp;0<br>
+:param&nbsp;ajax:&nbsp;if&nbsp;True,&nbsp;"X-Requested-With:&nbsp;XMLHttpRequest"&nbsp;header&nbsp;will&nbsp;be&nbsp;added&nbsp;to&nbsp;all&nbsp;HTTP&nbsp;requests<br>
+:param&nbsp;cut:&nbsp;if&nbsp;set,&nbsp;all&nbsp;strings&nbsp;matching&nbsp;specified&nbsp;regexp&nbsp;will&nbsp;be&nbsp;removed&nbsp;from&nbsp;all&nbsp;HTTP&nbsp;responses<br>
+:param&nbsp;sleep:&nbsp;if&nbsp;set,&nbsp;sleep&nbsp;after&nbsp;each&nbsp;HTTP&nbsp;request&nbsp;for&nbsp;the&nbsp;specified&nbsp;number&nbsp;of&nbsp;seconds,&nbsp;default&nbsp;value&nbsp;is&nbsp;0<br>
+:param&nbsp;verbose:&nbsp;if&nbsp;True,&nbsp;an&nbsp;output&nbsp;will&nbsp;be&nbsp;sent&nbsp;to&nbsp;STDOUT,&nbsp;default&nbsp;value&nbsp;is&nbsp;1<br>
+:return:</tt></dd></dl>
+
+<dl><dt><a name="WebHack-chkpath"><strong>chkpath</strong></a>(self, paths, comment<font color="#909090">=None</font>)</dt><dd><tt>Check&nbsp;that&nbsp;the&nbsp;given&nbsp;paths&nbsp;exist.&nbsp;If&nbsp;some&nbsp;path&nbsp;exists,&nbsp;it's&nbsp;added&nbsp;to&nbsp;self.<strong>known_urls</strong><br>
+:param&nbsp;paths:&nbsp;a&nbsp;list&nbsp;with&nbsp;request&nbsp;URIs<br>
+:param&nbsp;comment:&nbsp;a&nbsp;description&nbsp;of&nbsp;what's&nbsp;going&nbsp;on.&nbsp;Will&nbsp;be&nbsp;logged</tt></dd></dl>
+
+<dl><dt><a name="WebHack-help"><strong>help</strong></a>(self)</dt><dd><tt>A&nbsp;help&nbsp;method&nbsp;template.&nbsp;Called&nbsp;when&nbsp;invalid&nbsp;input&nbsp;is&nbsp;provided&nbsp;to&nbsp;the&nbsp;constructor</tt></dd></dl>
+
+<dl><dt><a name="WebHack-makereq"><strong>makereq</strong></a>(self, path, query<font color="#909090">=None</font>, headers<font color="#909090">=None</font>, method<font color="#909090">='GET'</font>)</dt><dd><tt>The&nbsp;core&nbsp;method&nbsp;for&nbsp;sending&nbsp;HTTP&nbsp;requests<br>
+:param&nbsp;path:&nbsp;a&nbsp;request&nbsp;URI&nbsp;(if&nbsp;it's&nbsp;directory,&nbsp;it&nbsp;should&nbsp;end&nbsp;with&nbsp;'/')<br>
+:param&nbsp;query:&nbsp;a&nbsp;query&nbsp;string<br>
+:param&nbsp;headers:&nbsp;a&nbsp;dict&nbsp;with&nbsp;additional&nbsp;request&nbsp;headers<br>
+:param&nbsp;method:&nbsp;HTTP&nbsp;request&nbsp;method<br>
+:return:&nbsp;a&nbsp;response&nbsp;tuple&nbsp;(str&nbsp;body,&nbsp;int&nbsp;code,&nbsp;dict&nbsp;headers)</tt></dd></dl>
+
+<dl><dt><a name="WebHack-newstructure"><strong>newstructure</strong></a>(self)</dt><dd><tt>Generates&nbsp;a&nbsp;dictionary&nbsp;for&nbsp;holding&nbsp;the&nbsp;information&nbsp;about&nbsp;some&nbsp;path<br>
+:return:&nbsp;a&nbsp;dict&nbsp;with&nbsp;all&nbsp;necessary&nbsp;(empty)&nbsp;fields</tt></dd></dl>
+
+<dl><dt><a name="WebHack-rep_log"><strong>rep_log</strong></a>(self, string, delim<font color="#909090">='<font color="#c040c0">\n</font>'</font>)</dt><dd><tt>Logging&nbsp;method.&nbsp;If&nbsp;self.<strong>verbose</strong>&nbsp;is&nbsp;True,&nbsp;sents&nbsp;output&nbsp;to&nbsp;STDOUT<br>
+:param&nbsp;string:&nbsp;a&nbsp;log&nbsp;entry<br>
+:param&nbsp;delim:&nbsp;a&nbsp;delimiter&nbsp;which&nbsp;is&nbsp;appended&nbsp;to&nbsp;the&nbsp;entry</tt></dd></dl>
+
+<dl><dt><a name="WebHack-restructure"><strong>restructure</strong></a>(self, path)</dt><dd><tt>Sets&nbsp;current&nbsp;path&nbsp;and&nbsp;generates&nbsp;a&nbsp;new&nbsp;structure&nbsp;for&nbsp;it,&nbsp;if&nbsp;path&nbsp;is&nbsp;new<br>
+:param&nbsp;path:&nbsp;current&nbsp;path</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="common.html#PyWebHack">common.PyWebHack</a>:<br>
+<dl><dt><strong>add_headers</strong> = {'Cookie': '', 'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'}</dl>
+
+<dl><dt><strong>allowed_params</strong> = ['host', 'ssl', 'ajax', 'cut', 'sleep', 'verbose']</dl>
+
+<dl><dt><strong>args</strong> = {}</dl>
+
+<dl><dt><strong>cnt_reqs</strong> = 0</dl>
+
+<dl><dt><strong>current_path</strong> = ''</dl>
+
+<dl><dt><strong>known_subs</strong> = []</dl>
+
+<dl><dt><strong>known_urls</strong> = {}</dl>
+
+<dl><dt><strong>log</strong> = ''</dl>
+
+<dl><dt><strong>verbose</strong> = False</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-sleep"><strong>sleep</strong></a>(...)</dt><dd><tt><a href="#-sleep">sleep</a>(seconds)<br>
+&nbsp;<br>
+Delay&nbsp;execution&nbsp;for&nbsp;a&nbsp;given&nbsp;number&nbsp;of&nbsp;seconds.&nbsp;&nbsp;The&nbsp;argument&nbsp;may&nbsp;be<br>
+a&nbsp;floating&nbsp;point&nbsp;number&nbsp;for&nbsp;subsecond&nbsp;precision.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__author__</strong> = 'Beched'</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Beched</td></tr></table>
+</body></html>
