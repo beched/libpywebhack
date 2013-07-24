@@ -4,7 +4,7 @@ setup(
     name='libpywebhack',
     version='1.0',
     packages=[''],
-    url='http://ahack.ru/releases/python-web-hacking.html',
+    url='http://ahack.ru/releases/python-web-hacking.htm',
     license='Creative Commons Attribution Non-Commercial Share Alike',
     author='Beched',
     author_email='admin@ahack.ru',
