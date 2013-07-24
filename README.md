@@ -7,6 +7,9 @@ See libpywebhack.html for pydoc-generated documentation.
 #Installation
 Run `$ python setup.py install` or just put your scripts in the same directory.
 
+#License
+Creative Commons Attribution Non-Commercial Share Alike
+
 #Key features
 * Detecting a web-server, platform, links, some sensitive files (method `softdetect`)
     * Apache, NginX, MS IIS
@@ -23,7 +26,7 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
     * Check if there're some source code backups of the scenario left in the public access (method `fuzzbackups`)
     * Try to find the subdomains of the current host (method `brutesubs`. It's multi-threaded, a thread-method is `dobrute`)
     * Check if the javascript source code matches the DOM XSS regexps by .mario (method `domxsstest`)
-    * Try to find the vulnerabilities in the known parameters of web application by sending some universal payloads
+    * Try to find the vulnerabilities in the known parameters of web application by sending some universal payloads (method `minifuzz`)
 
 #Examples of usage
 * Let's try something with ASP.NET site
@@ -43,7 +46,6 @@ Run `$ python setup.py install` or just put your scripts in the same directory.
         Checking for /META-INF...
         Checking for /_vti_bin...
         Testing for IIS+PHP/ASP auth bypass through NTFS
-        $ python test.py
         ==========
         Trying to retrieve content of the current IIS directory
         IIS 6 possibly detected
