@@ -244,7 +244,7 @@ class WebHack(PyWebHack):
                 tmp_headers.update({'Content-Type': 'application/x-www-form-urlencoded'})
                 html, code, hdrs = self.makereq('%s?%s' % (path, query), query, tmp_headers, 'POST')
                 path = re.search('in <b>(.*)</b> on line', html)
-                if ( path != None):
+                if path != None:
                     self.rep_log('Found server application path: %s' % path.group(1))
                 else:
                     self.rep_log('Failed')

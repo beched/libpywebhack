@@ -305,3 +305,6 @@ Creative Commons Attribution Non-Commercial Share Alike
         ==========
         47 requests made
     ```
+* There're few word lists for brute force in the /bases/ directory
+    * argsbase.txt is a list formed by args_grabber.php script which recursively retrieves parameter names from PHP source codes given a directory with the PHP files
+    * wordlist1.txt and wordlist2.txt lists are shamelessly taken from the Internet for the subdomain search
