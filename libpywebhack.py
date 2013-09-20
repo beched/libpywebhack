@@ -361,12 +361,13 @@ class WebHack(PyWebHack):
 
         self.rep_log(
             '==========\nSearching for the %s-parameters of %s\n%s' % (modes, path, len(base)) +
-            ' items loaded from the base\nDetecting the default page length and HTTP-code...'
+            ' items loaded from the base'
         )
-        if self.known_urls[path]['html'] is None:
-            self.known_urls[path]['html'], self.known_urls[path]['code'], self.known_urls[path]['hdrs'] = self.gpcreq(
-                path=path)
+
         for mode in modes:
+            self.rep_log('Detecting the default page length and HTTP-code...')
+            self.known_urls[path]['html'], self.known_urls[path]['code'], self.known_urls[path]['hdrs'] = self.gpcreq(
+                path, urlencode(dict([(x, fill ) for x in fix])), mode)
             self.rep_log('==========\nStarting dichotomy for %s-params...\n==========' % mode.upper())
             #max_input_vars in PHP is 1001
             for x in [base[1001 * i: 1001 * (i + 1)] for i in xrange((len(base) + 1000 ) / 1001)]:
