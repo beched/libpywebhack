@@ -26,7 +26,9 @@ class WebHack(PyWebHack):
         self.rep_log(info)
         self.chkpath(
             ['sitemap.xml', 'robots.txt', 'crossdomain.xml', 'clientaccesspolicy.xml', 'phpmyadmin', 'pma', 'myadmin',
-             '.svn', '.ssh', '.git', 'CVS', 'info.php', 'phpinfo.php', 'test.php'])
+             '.svn', '.ssh', '.git', 'CVS', 'info.php', 'phpinfo.php', 'test.php', 'php.php', 'Thumbs.db', 'CHANGELOG',
+             '.DS_Store', 'composer.lock', 'composer.json', '.hg', '.hgignore', '.gitignore', 'access.log', '.bash_history',
+             '.bash_profile', '.htaccess', '.htpasswd', '.mysql_history', '.passwd', '.htconfig', '.htusers'])
 
         try:
             for link in re.findall('%s(/[^"\'>]*)["\'>]' % self.host, self.known_urls[path]['html']):
@@ -101,7 +103,7 @@ class WebHack(PyWebHack):
                 self.rep_log('Failed')
         except:
             self.rep_log('Failed')
-        self.chkpath(['server-status'], 'server status application')
+        self.chkpath(['server-status', 'balancer-manager'])
 
     def nginxtest(self, path):
         """
@@ -473,15 +475,18 @@ class WebHack(PyWebHack):
             self.known_urls[path]['html'], self.known_urls[path]['code'], self.known_urls[path]['hdrs'] = self.makereq(
                 path)
         txt = self.known_urls[path]['html'].split('\n')
-        for line, text in enumerate(txt):
-            if re.search(
-                        '((src|href|data|location|code|value|action)\s*["\'\]]*\s*\+?\s*=)|((replace|assign|navigate|' +
-                        'getResponseHeader|open(Dialog)?|showModalDialog|eval|evaluate|execCommand|execScript|' +
-                        'setTimeout|setInterval)\s*["\'\]]*\s*\()', text) or re.search(
-                            '(location\s*[\[.])|([.\[]\s*["\']?\s*(arguments|dialogArguments|innerHTML|write(ln)?|' +
-                            'open(Dialog)?|showModalDialog|cookie|URL|documentURI|baseURI|referrer|name|opener|' +
-                            'parent|top|content|self|frames)\W)|(localStorage|sessionStorage|Database)', text):
-                info = 'DOM-based XSS. Line %s: %s' % (line, text) #tnx .mario for regexps
+        for line, text in enumerate(txt): #tnx .mario for regexps
+            re1 = '(((src|href|data|location|code|value|action)\s*["\'\]]*\s*\+?\s*=)|((replace|assign|navigate|' \
+                        'getResponseHeader|open(Dialog)?|showModalDialog|eval|evaluate|execCommand|execScript|' \
+                        'setTimeout|setInterval)\s*["\'\]]*\s*\())'
+            re2 = '((location\s*[\[.])|([.\[]\s*["\']?\s*(arguments|dialogArguments|innerHTML|write(ln)?|' \
+                            'open(Dialog)?|showModalDialog|cookie|URL|documentURI|baseURI|referrer|name|opener|' \
+                            'parent|top|content|self|frames)\W)|(localStorage|sessionStorage|Database))'
+            if re.search(re1, text):
+                info = 'DOM-based XSS. Line %s: %s' % (line, re.sub(re1, '\033[31;1m\\1\033[30;0m', text))
+                self.rep_log(info)
+            if re.search(re2, text):
+                info = 'DOM-based XSS. Line %s: %s' % (line, re.sub(re2, '\033[31;1m\\1\033[30;0m', text))
                 self.rep_log(info)
 
     def minifuzz(self, path):
