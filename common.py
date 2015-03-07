@@ -7,7 +7,7 @@ from urllib import urlencode
 __author__ = 'Beched'
 
 class PyWebHack:
-    allowed_params = ['host', 'ssl', 'ajax', 'cut', 'sleep', 'verbose']
+    allowed_params = ['host', 'ssl', 'ajax', 'cut', 'sleep', 'verbose', 'output']
     verbose = False
     log = ''
     cnt_reqs = 0
@@ -19,7 +19,7 @@ class PyWebHack:
         'Cookie': '',
         #'Accept' : 'text/html'
         'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
-    }
+        }
 
     def __init__(self, *args, **kwargs):
         """
@@ -29,7 +29,8 @@ class PyWebHack:
         :param ajax: if True, "X-Requested-With: XMLHttpRequest" header will be added to all HTTP requests
         :param cut: if set, all strings matching specified regexp will be removed from all HTTP responses
         :param sleep: if set, sleep after each HTTP request for the specified number of seconds, default value is 0
-        :param verbose: if True, an output will be sent to STDOUT, default value is 1
+        :param verbose: if True, an output will be sent to self.output or to STDOUT, default value is 1
+        :param output: the file for output, default is None
         :return:
         """
         for k, v in kwargs.items():
@@ -48,6 +49,7 @@ class PyWebHack:
             self.host)
         self.url = '%s://%s/' % (self.scheme, self.host)
         self.verbose = self.args.get('verbose', 1)
+        self.output = self.args.get('output', None)
 
     def __del__(self):
         """
@@ -57,7 +59,7 @@ class PyWebHack:
 
     def rep_log(self, string, delim='\n'):
         """
-        Logging method. If self.verbose is True, sents output to STDOUT
+        Logging method. If self.verbose is True, sents output to self.output or to STDOUT
         :param string: a log entry
         :param delim: a delimiter which is appended to the entry
         """
@@ -66,7 +68,10 @@ class PyWebHack:
         except:
             pass
         if self.verbose != 0:
-            sys.stdout.write('%s%s' % (string, delim))
+            if self.output is not None:
+                open(self.output, 'a+').write('%s%s' % (string, delim))
+            else:
+                sys.stdout.write('%s%s' % (string, delim))
 
     def newstructure(self):
         """
@@ -97,8 +102,7 @@ class PyWebHack:
         """
         self.rep_log(
             '==========\nLibPyWebHack\n==========\nThis is a class constructor and it accepts parameters' +
-            '%s. See docs for explanation.' % (
-                self.allowed_params, sys.argv[0]))
+            '%s. See docs for explanation.' % self.allowed_params)
 
     def makereq(self, path, query=None, headers=None, method='GET'):
         """
