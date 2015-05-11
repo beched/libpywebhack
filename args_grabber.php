@@ -32,14 +32,14 @@ foreach( $files as $name ) {
 
 print( "============================\nGrabbed " . count( $params ) . " parameters.\n" );
 
-$all = array_map( 'trim', file( '../bases/argsbase.txt' ) );
+$all = array_map( 'trim', file( './bases/argsbase.txt' ) );
 
 $params = array_unique( array_merge( $all, array_map( function( $val ) {
     return trim( $val, ' \'"');
 }, $params ) ) );
 
-file_put_contents( '../bases/argsbase.txt', '' );
+file_put_contents( './bases/argsbase.txt', '' );
 print( "============================\nRemoved duplicates, now " . count( $params ) . " parameters in base.\n" );
 
 foreach( $params as $param)
-    file_put_contents( '../bases/argsbase.txt', trim( $param, ' \'"' ) . "\n", FILE_APPEND );
+    file_put_contents( './bases/argsbase.txt', trim( $param, ' \'"' ) . "\n", FILE_APPEND );
