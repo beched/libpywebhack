@@ -4,13 +4,13 @@ libpywebhack
 A class with a plenty of useful instruments for web application analysis.
 See libpywebhack.html for pydoc-generated documentation.
 
-#Installation
+## Installation
 Run `$ python setup.py install` or just put your scripts in the same directory.
 
-#License
+## License
 Creative Commons Attribution Non-Commercial Share Alike
 
-#Key features
+## Key features
 * Detecting a web-server, platform, links, some sensitive files (method `softdetect`)
     * Apache, NginX, MS IIS
     * PHP, ASP.NET, Django, Ruby on Rails, Java
@@ -28,7 +28,7 @@ Creative Commons Attribution Non-Commercial Share Alike
     * Check if the javascript source code matches the DOM XSS regexps by .mario (method `domxsstest`)
     * Try to find the vulnerabilities in the known parameters of web application by sending some universal payloads (method `minifuzz`)
 
-#Examples of usage
+## Examples of usage
 * Let's try something with ASP.NET site
     * Put the following into test.py
     ```python
